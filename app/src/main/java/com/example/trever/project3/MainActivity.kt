@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         else {
             //Not logged in
             buttonLogout.visibility = View.GONE
-            buttonLogin.visibility - View.VISIBLE
+            buttonLogin.visibility = View.VISIBLE
             textUserName.text = "NOT LOGGED IN"
             textUserEMail.text = ""
             textUserID.text = ""
@@ -83,6 +83,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             intent.putExtra("userImageUrl", mUser?.photoUrl.toString())
             startActivity(intent)
 
+        }
+
+        buttonChat.setOnClickListener { view ->
+            val intent = Intent(this, ChatActivity::class.java)
+            intent.putExtra("userEmail", mUser?.email.toString())
+            intent.putExtra("userImageUrl", mUser?.photoUrl.toString())
+            startActivity(intent)
         }
 
         fab.setOnClickListener { view ->
